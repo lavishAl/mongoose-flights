@@ -3,10 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 require('dotenv').config();
 require('./config/database');
-
+// var flightsController = require('./controllers/flights');
+// flightsController(app);
 
 var indexRouter = require('./routes/index');
 var flightsRouter = require('./routes/flights');
@@ -33,14 +33,13 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // Set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // Render the error page
   res.status(err.status || 500);
   res.render('error');
 });
 
 module.exports = app;
- 
